@@ -28,12 +28,6 @@ authors = ['eric matthes', 'zed shaw', 'joshua bloch']
 prices = [10/3, 20/3, 9/3]
 popularity = [4, 8, 2]
 
-if categories[0] == 'python':
-    prices[0] = prices[0] * 1.3
-elif categories[0:] == 'java':
-    prices[0:] = prices[0:] * 0.9
-print(prices)
-
 for index in range(0, INDEX_SIZE):
     if categories[index] == 'python':
         prices[index] = prices[index] * 1.3
@@ -45,16 +39,8 @@ for index in range(0, INDEX_SIZE):
 
 
 
-if 'python' in categories[index]:
-    prices[index] = prices[index] * 1.3
-elif categories == 'java':
-    prices[0, INDEX_SIZE] = prices[0, INDEX_SIZE] * 0.9
-print(prices)
-
 k = max(popularity)
-if k == popularity[0]:
-    print (f" The most popular book is '{titles[0].title()}' {authors[0].upper()}")
-elif k == popularity[1]:
-    print (f" The most popular book is '{titles[1].title()}' {authors[1].upper()}")
-elif k == popularity[2]:
-    print (f" The most popular book is '{titles[2].title()}' {authors[2].upper()}'")
+
+
+print (f" The most popular book is '{titles[popularity.index(k)].title()}' {authors[popularity.index(k)].upper()}")
+
