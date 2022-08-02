@@ -19,11 +19,11 @@
         - show the most popular book 
         - remove code duplicates (if exists)      
     Update04:        
-        - increase final prices for most popular book by 100%
-        - sell the most popular book 
-        - add more books
+        + increase final prices for most popular book by 100%
+        + sell the most popular book 
+        + add more books
+        + add constant TAX_RATE
         - calculate taxes 
-        - add constant TAX_RATE
         - remove code duplicates (if exists) 
 '''
 
@@ -36,10 +36,17 @@ authors = ['eric matthes', 'zed shaw', 'joshua bloch']
 prices = [10/3, 20/3, 9/3]
 popularity = [4, 8, 2]
 
-for index in range(0, INDEX_SIZE):
-    print(f"{index + 1}. '{titles[index].title()}', '{authors[index].upper()}', {round(prices[index], 2)} {CURR},  - {categories[index]}")
+def increase_price(key):
+    prices[key] = prices[key] * 2;
 
-print('-------------------')
+def print_books(max_key):
+    for index in range(0, max_key):
+        print(f"{index + 1}. '{titles[index].title()}', '{authors[index].upper()}', {round(prices[index], 2)} {CURR},  - {categories[index]}")
+
+    print('-------------------')
+
+def sell(key):
+    return prices[key]
 
 for index in range(0, INDEX_SIZE):
     if categories[index] == 'python':
@@ -47,18 +54,22 @@ for index in range(0, INDEX_SIZE):
     elif categories[index] == 'java':
         prices[index] = prices[index] * 0.9
 
-    print(f"{index + 1}. '{titles[index].title()}', '{authors[index].upper()}', {round(prices[index], 2)} {CURR},  - {categories[index]}")
-
-print('-------------------')
+print_books(INDEX_SIZE)
 
 k = max(popularity)
 print (f" The most popular book is '{titles[popularity.index(k)].title()}' {authors[popularity.index(k)].upper()}")
 
 
-book_price = prices[popularity.index(k)]
-print(f"{CURR}{book_price}")
+increase_price(popularity.index(k))
+
+value = sell(popularity.index(k))
 
 TAX_RATE = 0.05
+
+tax = value * 0.05
+clean_value = value - tax
+
+print(clean_value)
 
 categories.insert(3, 'java')
 titles.append('java: the complete reference')
@@ -66,9 +77,12 @@ authors.append('herbert schildt')
 prices.append(17/5)
 popularity.append(11)
 
+print_books(INDEX_SIZE+1)
+
 books_sold = [40, 80, 20, 110]
 
 for index in range(0, INDEX_SIZE):
     taxes = prices[index] * books_sold[index] * TAX_RATE
 
 print (taxes)
+
