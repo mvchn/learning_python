@@ -57,3 +57,18 @@ print (f" The most popular book is '{titles[popularity.index(k)].title()}' {auth
 
 book_price = prices[popularity.index(k)]
 print(f"{CURR}{book_price}")
+
+TAX_RATE = 0.05
+
+categories.insert(3, 'java')
+titles.append('java: the complete reference')
+authors.append('herbert schildt')
+prices.append(17/5)
+popularity.append(11)
+
+books_sold = [40, 80, 20, 110]
+
+for index in range(0, INDEX_SIZE):
+    taxes = prices[index] * books_sold[index] * TAX_RATE
+
+print (taxes)
