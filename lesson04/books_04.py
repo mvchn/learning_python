@@ -23,7 +23,7 @@
         + sell the most popular book 
         + add more books
         + add constant TAX_RATE
-        - calculate taxes 
+        + calculate taxes 
         - remove code duplicates (if exists) 
 '''
 
@@ -68,7 +68,6 @@ TAX_RATE = 0.05
 
 tax = value * 0.05
 clean_value = value - tax
-
 
 print(clean_value)
 
