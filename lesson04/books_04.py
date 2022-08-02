@@ -30,34 +30,55 @@
 CURR = "$"
 INDEX_SIZE = 3
 
-categories = ['python', 'python', 'java', 'php']
-titles = ['python crash course', 'learn python the hard way', 'effective java']
-authors = ['eric matthes', 'zed shaw', 'joshua bloch']
-prices = [10/3, 20/3, 9/3]
-popularity = [4, 8, 2]
+popularity = [4, 8, 2, 11]
+
+books = [
+{
+    'id': '01',
+    'author': 'eric matthes',
+    'title': 'python crash course',
+    'price': 10/3,
+    'category': 'python'
+},
+{
+    'id': '02',
+    'author': 'zed shaw',
+    'title': 'learn python the hard way',
+    'price': 20/3,
+    'category': 'python'
+},
+{
+    'id': '03',
+    'author': 'joshua bloch',
+    'title': 'effective java',
+    'price': 9/3,
+    'category': 'java'
+},
+]
+
 
 def increase_price(key):
-    prices[key] = prices[key] * 2;
+    books[key]['price'] = books[key]['price'] * 2;
 
 def print_books(max_key):
-    for index in range(0, max_key):
-        print(f"{index + 1}. '{titles[index].title()}', '{authors[index].upper()}', {round(prices[index], 2)} {CURR},  - {categories[index]}")
+    for book in books:
+        print(f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}")
 
     print('-------------------')
 
 def sell(key):
-    return prices[key]
+    return books[key]['price']
 
 for index in range(0, INDEX_SIZE):
-    if categories[index] == 'python':
-        prices[index] = prices[index] * 1.3
-    elif categories[index] == 'java':
-        prices[index] = prices[index] * 0.9
+    if books[index]['category'] == 'python':
+        books[index]['price'] = books[index]['price'] * 1.3
+    elif books[index]['category'] == 'java':
+        books[index]['price'] = books[index]['price'] * 0.9
 
 print_books(INDEX_SIZE)
 
 k = max(popularity)
-print (f" The most popular book is '{titles[popularity.index(k)].title()}' {authors[popularity.index(k)].upper()}")
+print (f" The most popular book is '{books[popularity.index(k)]['title'].title()}' {books[popularity.index(k)]['author'].upper()}")
 
 
 increase_price(popularity.index(k))
@@ -71,12 +92,14 @@ clean_value = value - tax
 
 print(clean_value)
 
-categories.insert(3, 'java')
-titles.append('java: the complete reference')
-authors.append('herbert schildt')
-prices.append(17/5)
-popularity.append(11)
+books.append({
+    'id' : '04',
+    'category' : 'java',
+    'title': 'java: the complete reference',
+    'price': 17/5
+    })
 
+print(books)
 print_books(INDEX_SIZE+1)
 
 books_sold = [40, 80, 20, 110]
