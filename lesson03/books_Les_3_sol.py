@@ -59,15 +59,6 @@ print (f" The most popular book is '{titles[popularity.index(k)].title()}' {auth
 book_price = prices[popularity.index(k)]
 print(f"{CURR}{book_price}")
 
-
-index = 0;
-
-while True:
-    print('hello')
-    if index > 10: 
-        exit()
-        
-    index = index + 1;
        
     
 
