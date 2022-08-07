@@ -29,15 +29,19 @@
         + remove unnecessary variables and constants
         + describe functions by comments
         + sell books, not popularity 
-        - add a new 3 books to the storage
+        + add a new 3 books to the storage
         - create a new sell cycle (2 sell cycles should be in the result)
-        
+    Update06:
+        - get most popular book
+        - create a new sell cycle (2 sell cycles should be in the result)
+        - business value volume (events structure)
+        - ask user about sold books (user must input id)
+        - create function to search books by id
+        - remove INDEX_SIZE constant
 """
 
 CURR = "$"
 INDEX_SIZE = 3
-
-popularity = [4, 8, 2]
 
 books = [
     {
@@ -45,28 +49,31 @@ books = [
         'author': 'eric matthes',
         'title': 'python crash course',
         'price': 10 / 3,
-        'category': 'python'
+        'category': 'python',
+        'popularity': 4,
     },
     {
         'id': '02',
         'author': 'zed shaw',
         'title': 'learn python the hard way',
         'price': 20 / 3,
-        'category': 'python'
+        'category': 'python',
+        'popularity': 8,
     },
     {
         'id': '03',
         'author': 'joshua bloch',
         'title': 'effective java',
         'price': 9 / 3,
-        'category': 'java'
+        'category': 'java',
+        'popularity': 2,
     },
 ]
 
 
-def increase_price(key):
+def increase_price(book):
     """ Prises increases up to 100% """
-    books[key]['price'] = books[key]['price'] * 2
+    book['price'] = book['price'] * 2
 
 
 def print_books():
@@ -77,8 +84,25 @@ def print_books():
     print('-------------------')
 
 
+def print_book(book):
+    print(
+        f" The most popular book is '{book['title'].title()}' {book['author'].upper()}")
+
+
 def sell(book):
     return book['price']
+
+
+def get_most_popular():
+    popularity = 0
+
+    for book in books:
+        if book['popularity'] > popularity:
+            #max_popularity_index =
+            popularity = book['popularity']
+
+    #TODO: get most popular book
+    return books[0]
 
 
 for index in range(0, INDEX_SIZE):
@@ -89,13 +113,13 @@ for index in range(0, INDEX_SIZE):
 
 print_books()
 
-k = max(popularity)
-print(
-    f" The most popular book is '{books[popularity.index(k)]['title'].title()}' {books[popularity.index(k)]['author'].upper()}")
+# books[popularity.index(k)]
+book = get_most_popular()
+print_book(book)
 
-increase_price(popularity.index(k))
+increase_price(book)
 
-value = sell(books[popularity.index(k)])
+value = sell(book)
 
 TAX_RATE = 0.05
 
@@ -104,34 +128,49 @@ clean_value = value - tax
 
 books.append({
     'id': '04',
-    'author': 'herbert schildt'
+    'author': 'herbert schildt',
     'category': 'java',
     'title': 'java: the complete reference',
-    'price': 17 / 5
+    'price': 17 / 5,
+    'popularity': 0,
 })
 
 books.append({
     'id': '05',
-    'author': 'barbara doylet'
+    'author': 'barbara doylet',
     'category': 'c#',
     'title': 'c# programming: from problem analysis to program designe',
-    'price': 14 / 9
+    'price': 14 / 9,
+    'popularity': 32,
 })
 
 books.append({
     'id': '06',
-    'author': 'david flanagan'
+    'author': 'david flanagan',
     'category': 'javascript',
     'title': "javascript: the definitive guide: master the world's most-used programming language",
-    'price': 22 / 7
+    'price': 22 / 7,
+    'popularity': 4,
 })
 
 books.append({
     'id': '07',
-    'author': 'michael lombard'
+    'author': 'michael lombard',
     'category': 'python',
     'title': 'python: learn python programming in one week with step-by-step',
-    'price': 17 / 9
+    'price': 17 / 9,
+    'popularity': 8,
 })
-print(clean_value)
 
+print_books()
+
+events = [
+    {
+        'book_id' :  '07',
+        'price' : 10.5
+    },
+    {
+        'book_id' :  '05',
+        'price' : 8.5
+    },
+]
