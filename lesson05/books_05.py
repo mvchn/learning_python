@@ -38,6 +38,10 @@
         - ask user about sold books (user must input id)
         - create function to search books by id
         - remove INDEX_SIZE constant
+        - create formula for popularity
+        - remove formula for price
+        - books list should be an argument in print_books
+        - books list should be an argument in get_most_popular
 """
 
 CURR = "$"
@@ -72,7 +76,7 @@ books = [
 
 
 def increase_price(book):
-    """ Prises increases up to 100% """
+    """ Prices increases up to 100% """
     book['price'] = book['price'] * 2
 
 
@@ -98,10 +102,10 @@ def get_most_popular():
 
     for book in books:
         if book['popularity'] > popularity:
-            #max_popularity_index =
+            # max_popularity_index =
             popularity = book['popularity']
 
-    #TODO: get most popular book
+    # TODO: get most popular book
     return books[0]
 
 
@@ -166,11 +170,11 @@ print_books()
 
 events = [
     {
-        'book_id' :  '07',
-        'price' : 10.5
+        'book_id': '07',
+        'price': 10.5
     },
     {
-        'book_id' :  '05',
-        'price' : 8.5
+        'book_id': '05',
+        'price': 8.5
     },
 ]
