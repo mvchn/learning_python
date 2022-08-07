@@ -1,4 +1,4 @@
-''' To write table with books:
+""" To write table with books:
     - title (capitalize first letters)
     - author (upper case)
     - price (rounded)
@@ -26,10 +26,88 @@
         + calculate taxes 
         - remove code duplicates (if exists) 
     Update05:       
-        - remove unnecessary variables and constants
-        - desctibe functions by comments
-        - sell books, not popularity 
+        + remove unnecessary variables and constants
+        + describe functions by comments
+        + sell books, not popularity 
         - add a new 3 books to the storage
         - create a new sell cycle (2 sell cycles should be in the result)
         
-'''
+"""
+
+CURR = "$"
+INDEX_SIZE = 3
+
+popularity = [4, 8, 2]
+
+books = [
+    {
+        'id': '01',
+        'author': 'eric matthes',
+        'title': 'python crash course',
+        'price': 10 / 3,
+        'category': 'python'
+    },
+    {
+        'id': '02',
+        'author': 'zed shaw',
+        'title': 'learn python the hard way',
+        'price': 20 / 3,
+        'category': 'python'
+    },
+    {
+        'id': '03',
+        'author': 'joshua bloch',
+        'title': 'effective java',
+        'price': 9 / 3,
+        'category': 'java'
+    },
+]
+
+
+def increase_price(key):
+    """ Prises increases up to 100% """
+    books[key]['price'] = books[key]['price'] * 2
+
+
+def print_books():
+    for book in books:
+        print(
+            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}")
+
+    print('-------------------')
+
+
+def sell(book):
+    return book['price']
+
+
+for index in range(0, INDEX_SIZE):
+    if books[index]['category'] == 'python':
+        books[index]['price'] = books[index]['price'] * 1.3
+    elif books[index]['category'] == 'java':
+        books[index]['price'] = books[index]['price'] * 0.9
+
+print_books()
+
+k = max(popularity)
+print(
+    f" The most popular book is '{books[popularity.index(k)]['title'].title()}' {books[popularity.index(k)]['author'].upper()}")
+
+increase_price(popularity.index(k))
+
+value = sell(books[popularity.index(k)])
+
+TAX_RATE = 0.05
+
+tax = value * 0.05
+clean_value = value - tax
+
+books.append({
+    'id': '04',
+    'category': 'java',
+    'title': 'java: the complete reference',
+    'price': 17 / 5
+})
+
+print(clean_value)
+
