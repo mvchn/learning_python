@@ -104,10 +104,34 @@ clean_value = value - tax
 
 books.append({
     'id': '04',
+    'author': 'herbert schildt'
     'category': 'java',
     'title': 'java: the complete reference',
     'price': 17 / 5
 })
 
+books.append({
+    'id': '05',
+    'author': 'barbara doylet'
+    'category': 'c#',
+    'title': 'c# programming: from problem analysis to program designe',
+    'price': 14 / 9
+})
+
+books.append({
+    'id': '06',
+    'author': 'david flanagan'
+    'category': 'javascript',
+    'title': "javascript: the definitive guide: master the world's most-used programming language",
+    'price': 22 / 7
+})
+
+books.append({
+    'id': '07',
+    'author': 'michael lombard'
+    'category': 'python',
+    'title': 'python: learn python programming in one week with step-by-step',
+    'price': 17 / 9
+})
 print(clean_value)
 
