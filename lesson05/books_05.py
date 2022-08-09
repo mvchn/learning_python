@@ -32,16 +32,16 @@
         + add a new 3 books to the storage
         - create a new sell cycle (2 sell cycles should be in the result)
     Update06:
-        - get most popular book
-        - create a new sell cycle (2 sell cycles should be in the result)
-        - business value volume (events structure)
-        - ask user about sold books (user must input id)
-        - create function to search books by id
-        - remove INDEX_SIZE constant
-        - create formula for popularity
-        - remove formula for price
-        - books list should be an argument in print_books
-        - books list should be an argument in get_most_popular
+        - get most popular book  ( 1 )
+        - create a new sell cycle (2 sell cycles should be in the result) ( 32 )
+        - business value volume (events structure) ( 2 )
+        - ask user about sold books (user must input id) ( 32 )
+        - create function to search book by id ( 8 )
+        - remove INDEX_SIZE constant ( 1 )
+        - create formula for popularity ( 8 )
+        - remove formula for price ( 4 )
+        - books list should be an argument in print_books ( 32 )
+        - books list should be an argument in get_most_popular ( 32 )
 """
 
 CURR = "$"
