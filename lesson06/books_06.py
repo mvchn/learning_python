@@ -32,24 +32,23 @@
         + add a new 3 books to the storage
         - create a new sell cycle (2 sell cycles should be in the result)
     Update06:
-        - get most popular book  ( 1 )
+        + get most popular book  ( 1 1h )
         - create a new sell cycle (2 sell cycles should be in the result) ( 32 )
-        - business value volume (events structure) ( 2 )
+        + business value volume (events structure) ( 2 )
         - ask user about sold books (user must input id) ( 32 )
         - create function to search book by id ( 8 )
-        - remove INDEX_SIZE constant ( 1 )
+        + remove INDEX_SIZE constant ( 1 - 1h )
         - create formula for popularity ( 8 )
         - remove formula for price ( 4 )
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
+      Update07:
+        - remove len() call ( 1 )
+        - return valid popular book in function get_most_popular ( 4 )
+        - use market_events structure to calculate business value ( 32 )
 """
 
 CURR = "$"
-
-INDEX_SIZE = 3
-
-INDEX_POPULARITY = 10 # A unit of popularity is equal to 10 books sold
-
 
 books = [
     {
@@ -87,7 +86,7 @@ def increase_price(book):
 def print_books():
     for book in books:
         print(
-            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}")
+            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}, /{book['popularity']}/")
 
     print('-------------------')
 
@@ -102,15 +101,14 @@ def sell(book):
 
 
 def get_most_popular():
-    popularity = 0
+    index_popularity = 0
 
     for book in books:
-        if book['popularity'] > popularity:
+        if book['popularity'] > index_popularity:
             # max_popularity_index =
-            popularity = book['popularity']
+            index_popularity = book['popularity']
 
-    # TODO: get most popular book
-    return books[0]
+    return books[1]
 
 
 for index in range(0, len(books)):
@@ -172,26 +170,24 @@ books.append({
 
 print_books()
 
-events = [
+market_events = [
     {
-        'book_id': '07',
-        'price': 10.5
+        'book_id': '07'
     },
     {
-        'book_id': '05',
-        'price': 8.5
+        'book_id': '05'
+    },
+    {
+        'book_id': '03'
+    },
+    {
+        'book_id': '03'
     },
 ]
 
-largest_popularity = -1
-for book in books:
-    if book['popularity'] <= largest_popularity:
-        continue
-    largest_popularity = book['popularity']
-print('Largest popularity is', largest_popularity)
+INDEX_POPULARITY = 10 # A unit of popularity is equal to 10 books sold
 
 for book in books:
     val = book['price'] * book ['popularity'] * INDEX_POPULARITY
     print (book['id'], round(val), CURR)
-
 
