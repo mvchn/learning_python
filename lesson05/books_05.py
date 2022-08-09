@@ -47,9 +47,7 @@
 CURR = "$"
 
 INDEX_SIZE = 3
-
 INDEX_POPULARITY = 10 # A unit of popularity is equal to 10 books sold
-
 
 books = [
     {
@@ -194,4 +192,10 @@ for book in books:
     val = book['price'] * book ['popularity'] * INDEX_POPULARITY
     print (book['id'], round(val), CURR)
 
+for index in range(0, len(books)):
+    if books[index]['category'] == 'python':
+        books[index]['price'] = books[index]['price'] * 1.3
+    elif books[index]['category'] == 'java':
+        books[index]['price'] = books[index]['price'] * 0.9
+print_books()
 
