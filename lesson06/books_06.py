@@ -39,13 +39,14 @@
         - create function to search book by id ( 8 )
         + remove INDEX_SIZE constant ( 1 - 1h )
         - create formula for popularity ( 8 )
-        - remove formula for price ( 4 )
+        + remove formula for price ( 4 )
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
       Update07:
         - remove len() call ( 1 )
-        - return valid popular book in function get_most_popular ( 4 )
+        + return valid popular book in function get_most_popular ( 4 )
         - use market_events structure to calculate business value ( 32 )
+
 """
 
 CURR = "$"
@@ -57,7 +58,7 @@ books = [
         'title': 'python crash course',
         'price': 10 / 3,
         'category': 'python',
-        'popularity': 4,
+        'popularity': 2,
     },
     {
         'id': '02',
@@ -65,7 +66,7 @@ books = [
         'title': 'learn python the hard way',
         'price': 20 / 3,
         'category': 'python',
-        'popularity': 8,
+        'popularity': 3,
     },
     {
         'id': '03',
@@ -73,9 +74,13 @@ books = [
         'title': 'effective java',
         'price': 9 / 3,
         'category': 'java',
-        'popularity': 2,
+        'popularity': 1,
     },
 ]
+
+
+def popularity_formula(c):
+    return c * 2 * 2
 
 
 def increase_price(book):
@@ -86,7 +91,7 @@ def increase_price(book):
 def print_books():
     for book in books:
         print(
-            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}, /{book['popularity']}/")
+            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}, /{popularity_formula(book['popularity'])}/")
 
     print('-------------------')
 
@@ -183,9 +188,8 @@ market_events = [
     },
 ]
 
-INDEX_POPULARITY = 10 # A unit of popularity is equal to 10 books sold
+INDEX_POPULARITY = 10  # A unit of popularity is equal to 10 books sold
 
 for book in books:
-    val = book['price'] * book ['popularity'] * INDEX_POPULARITY
-    print (book['id'], round(val), CURR)
-
+    val = book['price'] * book['popularity'] * INDEX_POPULARITY
+    print(book['id'], round(val), CURR)
