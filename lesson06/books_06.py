@@ -91,24 +91,19 @@ def print_books():
     print('-------------------')
 
 
-def print_book(book):
-    print(
-        f" The most popular book is '{book['title'].title()}' {book['author'].upper()}")
-
-
 def sell(book):
     return book['price']
 
 
 def get_most_popular():
     index_popularity = 0
-
+    most_popular = books[index_popularity]
     for book in books:
         if book['popularity'] > index_popularity:
-            # max_popularity_index =
             index_popularity = book['popularity']
+            most_popular = book
 
-    return books[1]
+    return most_popular
 
 
 for index in range(0, len(books)):
@@ -121,7 +116,7 @@ print_books()
 
 # books[popularity.index(k)]
 book = get_most_popular()
-print_book(book)
+print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 increase_price(book)
 
@@ -169,6 +164,9 @@ books.append({
 })
 
 print_books()
+
+book = get_most_popular()
+print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 market_events = [
     {
