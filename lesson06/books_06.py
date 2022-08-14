@@ -38,8 +38,8 @@
         - ask user about sold books (user must input id) ( 32 )
         - create function to search book by id ( 8 )
         + remove INDEX_SIZE constant ( 1 - 1h )
-        - create formula for popularity ( 8 )
-        + remove formula for price ( 4 )
+        + create formula for popularity ( 8 )
+        - remove formula for price ( 4 )
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
       Update07:
