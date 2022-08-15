@@ -10,44 +10,46 @@
         - use range for index in cycle
         - remove space in constant CURR
         - add index size to constants
-        - slice lists to the index size 
-        - remove code duplicates (if exists)   
+        - slice lists to the index size
+        - remove code duplicates (if exists)
     Update03:
         - increase final prices for python books by 30%
         - reduce final prices for java books by 10%
         - control lists size
-        - show the most popular book 
-        - remove code duplicates (if exists)      
-    Update04:        
+        - show the most popular book
+        - remove code duplicates (if exists)
+    Update04:
         + increase final prices for most popular book by 100%
-        + sell the most popular book 
+        + sell the most popular book
         + add more books
         + add constant TAX_RATE
-        + calculate taxes 
-        - remove code duplicates (if exists) 
-    Update05:       
+        + calculate taxes
+        - remove code duplicates (if exists)
+    Update05:
         + remove unnecessary variables and constants
         + describe functions by comments
-        + sell books, not popularity 
+        + sell books, not popularity
         + add a new 3 books to the storage
         - create a new sell cycle (2 sell cycles should be in the result)
     Update06:
-        - get most popular book  ( 1 )
+        + get most popular book  ( 1 1h )
         - create a new sell cycle (2 sell cycles should be in the result) ( 32 )
-        - business value volume (events structure) ( 2 )
+        + business value volume (events structure) ( 2 )
         - ask user about sold books (user must input id) ( 32 )
         - create function to search book by id ( 8 )
-        - remove INDEX_SIZE constant ( 1 )
-        - create formula for popularity ( 8 )
+        + remove INDEX_SIZE constant ( 1 - 1h )
+        + create formula for popularity ( 8 )
         - remove formula for price ( 4 )
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
+      Update07:
+        - remove len() call ( 1 )
+        + return valid popular book in function get_most_popular ( 4 )
+        - use market_events structure to calculate business value ( 32 )
+
 """
 
 CURR = "$"
-
-INDEX_SIZE = 3
-INDEX_POPULARITY = 10 # A unit of popularity is equal to 10 books sold
 
 books = [
     {
@@ -56,7 +58,7 @@ books = [
         'title': 'python crash course',
         'price': 10 / 3,
         'category': 'python',
-        'popularity': 4,
+        'popularity': 2,
     },
     {
         'id': '02',
@@ -64,7 +66,7 @@ books = [
         'title': 'learn python the hard way',
         'price': 20 / 3,
         'category': 'python',
-        'popularity': 8,
+        'popularity': 3,
     },
     {
         'id': '03',
@@ -72,9 +74,13 @@ books = [
         'title': 'effective java',
         'price': 9 / 3,
         'category': 'java',
-        'popularity': 2,
+        'popularity': 1,
     },
 ]
+
+
+def popularity_formula(c):
+    return c * 2 * 2
 
 
 def increase_price(book):
@@ -85,14 +91,9 @@ def increase_price(book):
 def print_books():
     for book in books:
         print(
-            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}")
+            f"{book['id']}. '{book['title'].title()}', '{book['author'].upper()}', {round(book['price'], 2)} {CURR},  - {book['category']}, /{popularity_formula(book['popularity'])}/")
 
     print('-------------------')
-
-
-def print_book(book):
-    print(
-        f" The most popular book is '{book['title'].title()}' {book['author'].upper()}")
 
 
 def sell(book):
@@ -100,15 +101,14 @@ def sell(book):
 
 
 def get_most_popular():
-    popularity = 0
-
+    index_popularity = 0
+    most_popular = books[index_popularity]
     for book in books:
-        if book['popularity'] > popularity:
-            # max_popularity_index =
-            popularity = book['popularity']
+        if book['popularity'] > index_popularity:
+            index_popularity = book['popularity']
+            most_popular = book
 
-    # TODO: get most popular book
-    return books[0]
+    return most_popular
 
 
 for index in range(0, len(books)):
@@ -121,7 +121,7 @@ print_books()
 
 # books[popularity.index(k)]
 book = get_most_popular()
-print_book(book)
+print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 increase_price(book)
 
@@ -170,32 +170,28 @@ books.append({
 
 print_books()
 
-events = [
+book = get_most_popular()
+print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
+
+market_events = [
     {
-        'book_id': '07',
-        'price': 10.5
+        'book_id': '07'
     },
     {
-        'book_id': '05',
-        'price': 8.5
+        'book_id': '05'
+    },
+    {
+        'book_id': '03'
+    },
+    {
+        'book_id': '03'
     },
 ]
 
-largest_popularity = -1
-for book in books:
-    if book['popularity'] <= largest_popularity:
-        continue
-    largest_popularity = book['popularity']
-print('Largest popularity is', largest_popularity)
+INDEX_POPULARITY = 10  # A unit of popularity is equal to 10 books sold
 
 for book in books:
-    val = book['price'] * book ['popularity'] * INDEX_POPULARITY
-    print (book['id'], round(val), CURR)
+    val = book['price'] * book['popularity'] * INDEX_POPULARITY
+    print(book['id'], round(val), CURR)
 
-for index in range(0, len(books)):
-    if books[index]['category'] == 'python':
-        books[index]['price'] = books[index]['price'] * 1.3
-    elif books[index]['category'] == 'java':
-        books[index]['price'] = books[index]['price'] * 0.9
-print_books()
 

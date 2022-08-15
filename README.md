@@ -12,3 +12,16 @@ Current issues:
 - remove formula for price
 - books list should be an argument in print_books
 - books list should be an argument in get_most_popular
+
+### Howto contribute:
+
+```bash
+$ git status 
+$ git checkout develop
+$ git checkout -b branch_name
+....
+$ git status 
+$ dit add .
+$ git commit -m "_updates_"  
+$ git push -u origin branch_name
+```
