@@ -36,7 +36,7 @@
         - create a new sell cycle (2 sell cycles should be in the result) ( 32 )
         + business value volume (events structure) ( 2 )
         - ask user about sold books (user must input id) ( 32 )
-        - create function to search book by id ( 8 )
+        + create function to search book by id ( 8 )
         + remove INDEX_SIZE constant ( 1 - 1h )
         + create formula for popularity ( 8 )
         - remove formula for price ( 4 )
@@ -77,6 +77,13 @@ books = [
         'popularity': 1,
     },
 ]
+
+
+def search_by_id(id):
+    """ Search by ID """
+    for item in books:
+        if item['id'] == id:
+            return item
 
 
 def popularity_formula(c):
