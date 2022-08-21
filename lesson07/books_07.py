@@ -43,7 +43,7 @@
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
       Update07:
-        - remove len() call ( 1 )
+        + remove len() call ( 1 )
         + return valid popular book in function get_most_popular ( 4 )
         - use market_events structure to calculate business value ( 32 )
 
@@ -111,11 +111,11 @@ def get_most_popular():
     return most_popular
 
 
-for index in range(0, len(books)):
-    if books[index]['category'] == 'python':
-        books[index]['price'] = books[index]['price'] * 1.3
-    elif books[index]['category'] == 'java':
-        books[index]['price'] = books[index]['price'] * 0.9
+for book in books:
+    if book['category'] == 'python':
+        book['price'] = book['price'] * 1.3
+    elif book['category'] == 'java':
+        book['price'] = book['price'] * 0.9
 
 print_books()
 
