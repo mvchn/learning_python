@@ -46,7 +46,7 @@
         - remove len() call ( 1 )
         + return valid popular book in function get_most_popular ( 4 )
         - use market_events structure to calculate business value ( 32 )
-
+        + test
 """
 
 CURR = "$"
