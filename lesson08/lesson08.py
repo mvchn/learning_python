@@ -6,11 +6,11 @@ Books
 
 from func.functions import print_books
 
-from const.constants import CURR
+CURR = "$"
 
 books = [
     {
-        'id': 1,
+        'id': '01',
         'author': 'eric matthes',
         'title': 'python crash course',
         'price': 10 / 3,
@@ -18,7 +18,7 @@ books = [
         'popularity': 2,
     },
     {
-        'id': 2,
+        'id': '02',
         'author': 'zed shaw',
         'title': 'learn python the hard way',
         'price': 20 / 3,
@@ -26,7 +26,7 @@ books = [
         'popularity': 3,
     },
     {
-        'id': 3,
+        'id': '03',
         'author': 'joshua bloch',
         'title': 'effective java',
         'price': 9 / 3,
@@ -44,7 +44,7 @@ def sell(book):
     return book['price']
 
 
-def get_most_popular(books):
+def get_most_popular():
     index_popularity = 0
     most_popular = books[index_popularity]
     for book in books:
@@ -65,18 +65,20 @@ for book in books:
 print_books(books)
 
 # books[popularity.index(k)]
-book = get_most_popular(books)
+book = get_most_popular()
 print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 increase_price(book)
 
 value = sell(book)
 
+TAX_RATE = 0.05
+
 tax = value * 0.05
 clean_value = value - tax
 
 books.append({
-    'id': 4,
+    'id': '04',
     'author': 'herbert schildt',
     'category': 'java',
     'title': 'java: the complete reference',
@@ -85,7 +87,7 @@ books.append({
 })
 
 books.append({
-    'id': 5,
+    'id': '05',
     'author': 'barbara doylet',
     'category': 'c#',
     'title': 'c# programming: from problem analysis to program designe',
@@ -94,7 +96,7 @@ books.append({
 })
 
 books.append({
-    'id': 6,
+    'id': '06',
     'author': 'david flanagan',
     'category': 'javascript',
     'title': "javascript: the definitive guide: master the world's most-used programming language",
@@ -103,7 +105,7 @@ books.append({
 })
 
 books.append({
-    'id': 7,
+    'id': '07',
     'author': 'michael lombard',
     'category': 'python',
     'title': 'python: learn python programming in one week with step-by-step',
@@ -113,7 +115,7 @@ books.append({
 
 print_books(books)
 
-book = get_most_popular(books)
+book = get_most_popular()
 print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 market_events = [
@@ -131,15 +133,10 @@ market_events = [
     },
 ]
 
+INDEX_POPULARITY = 10  # A unit of popularity is equal to 10 books sold
 
 for book in books:
-    val = book['price'] * book['popularity']
+    val = book['price'] * book['popularity'] * INDEX_POPULARITY
     print(book['id'], round(val), CURR)
 
 
-id = int(input("Enter book ID for sell: "))
-if id > len(books):
-    print ("ID doesn't exist")
-    id = int(input("Enter book ID for sell: "))
-popularity = int(input("Enter number of books sold: "))
-print (id, popularity)
