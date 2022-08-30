@@ -140,3 +140,6 @@ for book in books:
     print(book['id'], round(val), CURR)
 
 
+id = input("Enter book ID for sell: ")
+
+print(int(id))
