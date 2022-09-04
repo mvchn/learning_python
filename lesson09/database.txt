@@ -1,0 +1,2 @@
+1, 'eric matthes', 'python crash course',       10, 'python', 2
+2, 'zed shaw',     'learn python the hard way', 20, 'python', 3
