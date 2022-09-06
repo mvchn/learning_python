@@ -1,21 +1,21 @@
-Book Application:
+Book Application
 ==
 
 Simple application for books management.
 
 ### How to use
 
-1. Clone repository to the __directory__.
-2. Go to the  __directory__
-3. Type in the console:
+Clone repository to the __directory__:
+```bash
+$ git clone git@github.com:mvchn/learning_python.git
+```
+Go to the  __directory__:
+```bash
+$ cd learning_python
+```
+Type in the console:
 ```bash
 $ python main.py
 ```
 
-
 ... and follow instructions.
-
-
-
-
-
