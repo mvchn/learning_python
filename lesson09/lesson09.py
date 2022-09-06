@@ -14,6 +14,7 @@ class Book:
         print(f"Title: {self.title}")
         print(f"Price: {self.price}")
         print(f"Category: {self.category}")
+        print(f"Popularity: {self.popularity}")
         print('-----------')
 
 
@@ -27,6 +28,6 @@ except FileNotFoundError:
     exit()
 
 for line in lines:
-    # separate line with ,
-    item = Book(line[0], line[1], line[2], line[3], line[4], line[5])
+    pieces = line.split(",")
+    item = Book(pieces[0].strip(), pieces[1].strip(), pieces[2].strip(), pieces[3].strip(), pieces[4].strip(), pieces[5].strip())
     item.print_book()
