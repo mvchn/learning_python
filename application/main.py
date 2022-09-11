@@ -5,44 +5,37 @@
 from func.functions import print_books
 from action.classes import MarketEvent
 from const.constants import CURR
+from models import Book
+from models import Shelf
 
-books = [
-    {
-        'id': 1,
-        'author': 'eric matthes',
-        'title': 'python crash course',
-        'price': 10 / 3,
-        'category': 'python',
-        'popularity': 2,
-    },
-    {
-        'id': 2,
-        'author': 'zed shaw',
-        'title': 'learn python the hard way',
-        'price': 20 / 3,
-        'category': 'python',
-        'popularity': 3,
-    },
-    {
-        'id': 3,
-        'author': 'joshua bloch',
-        'title': 'effective java',
-        'price': 9 / 3,
-        'category': 'java',
-        'popularity': 1,
-    },
-]
 
-print_books(books, CURR)
 
-print("* sell - start sell cycle")
-print("* rev - see revenue")
-print("* up - update popularity\n")
+#print_books(books, CURR)
 
-# class instance sample
+filename = 'database.txt'
+
+try:
+    with open(filename) as file:
+        lines = file.readlines()
+except FileNotFoundError:
+    print(f"File {filename} not found")
+    exit()
+
+shelf = Shelf
+
+for line in lines:
+
+    pieces = line.split(",")
+    item = Book(pieces[0].strip(), pieces[1].strip(), pieces[2].strip(), pieces[3].strip(), pieces[4].strip(), pieces[5].strip())
+    # TODO: fix line
+    #shelf.add_book(item)
+    print(f"{item.get_id()}. {item.get_name()}")
+
 
 id = input('Enter id: ')
 
-event = MarketEvent(id, '30.08.2022', 10, CURR)
+item.print_book()
 
-event.print_event()
+# event = MarketEvent(id, '30.08.2022', 10, CURR)
+#
+# event.print_event()
