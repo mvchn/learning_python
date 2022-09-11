@@ -36,17 +36,17 @@
         - create a new sell cycle (2 sell cycles should be in the result) ( 32 )
         + business value volume (events structure) ( 2 )
         - ask user about sold books (user must input id) ( 32 )
-        - create function to search book by id ( 8 )
+        + create function to search book by id ( 8 )
         + remove INDEX_SIZE constant ( 1 - 1h )
         + create formula for popularity ( 8 )
         - remove formula for price ( 4 )
         - books list should be an argument in print_books ( 32 )
         - books list should be an argument in get_most_popular ( 32 )
       Update07:
-        - remove len() call ( 1 )
+        + remove len() call ( 1 )
         + return valid popular book in function get_most_popular ( 4 )
         - use market_events structure to calculate business value ( 32 )
-
+        + test
 """
 
 CURR = "$"
@@ -77,6 +77,13 @@ books = [
         'popularity': 1,
     },
 ]
+
+
+def search_by_id(id):
+    """ Search by ID """
+    for item in books:
+        if item['id'] == id:
+            return item
 
 
 def popularity_formula(c):
@@ -111,11 +118,11 @@ def get_most_popular():
     return most_popular
 
 
-for index in range(0, len(books)):
-    if books[index]['category'] == 'python':
-        books[index]['price'] = books[index]['price'] * 1.3
-    elif books[index]['category'] == 'java':
-        books[index]['price'] = books[index]['price'] * 0.9
+for book in books:
+    if book['category'] == 'python':
+        book['price'] = book['price'] * 1.3
+    elif book['category'] == 'java':
+        book['price'] = book['price'] * 0.9
 
 print_books()
 
