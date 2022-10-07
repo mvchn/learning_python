@@ -1,3 +1,4 @@
 .idea
+__pycache__
 /application/database.txt
 /lesson11/database.txt
