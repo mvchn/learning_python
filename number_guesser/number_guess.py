@@ -1,9 +1,14 @@
 from random import randint
-SN = 0   # SN - smallest number of range
-LN = 50  # LN - largest number of range
-n = randint(SN, LN)
 
-answer = str(input("I'm thinking of a number from " + str(SN) + " to " + str(LN) + ". Do you want to guess?\n"))
+LOW_BORDER = 0
+HIGH_BORDER = 50
+
+computer_number = randint(LOW_BORDER, HIGH_BORDER)
+
+# TODO: use f() to print the message
+answer = str(input("I'm thinking of a number from " + str(LOW_BORDER) + " to " + str(HIGH_BORDER) + ". Do you want to guess?\n"))
+
+# TODO: use default answer by enter button
 if 'yes' in answer or 'YES' in answer or 'Yes' in answer:
     print('OK!')
 elif 'no' in answer or 'NO' in answer or 'No' in answer:
@@ -13,30 +18,19 @@ else:
     print("I'm sorry, but I don't understand you!")
     exit()
 
-a = int(input('Input your number:'))
-if type(a) == int:
-    if SN <= a <= LN:
-        if a == n:
-            print('Fantastic! Well done!!!')
-            exit()
-        elif a > n:
-            print('Your number is a little more than mine')
-        elif a < n:
-            print('Your number is a little less than mine')
-    else:
-        print("\nPlease, input a number from " + str(SN) + " to " + str(LN))
-        exit()
-else:
-    print('The variable is not a number')
+user_number = input('Input your number: ')
 
-print(n)
 try:
-    if a == n:
-        print('Fantastic! Well done!!!')
-        exit()
-    elif a > n:
-        print('Your number is a little more than my')
-    elif a < n:
-        print('My number is a little more than yours')
+    user_number = int(user_number)
 except ValueError:
-    print('\nThis is not a number. Try again...')
+    print('You should input a number!')
+    exit()
+
+if user_number == computer_number:
+    print('Fantastic! Well done!!!')
+    exit()
+elif user_number > computer_number:
+    print('Your number is a little more than my')
+elif user_number < computer_number:
+    print('Your number is a little less than mine')
+
