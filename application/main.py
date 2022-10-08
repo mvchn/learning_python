@@ -21,18 +21,18 @@ except FileNotFoundError:
     print(f"File {filename} not found")
     exit()
 
-shelf = {}
+shelf = Shelf('Shelf 1')
 
 for line in lines:
     pieces = line.split(",")
     item = Book(pieces[0].strip(), pieces[1].strip(), pieces[2].strip(), pieces[3].strip(), pieces[4].strip(), pieces[5].strip())
-    shelf[pieces[0].strip()] = item
+    shelf.add_book(item)
 
     print(f"{item.get_id()}. {item.get_name()}")
 
 
 id = input('Enter id: ')
 
-result = shelf.get(id)
+result = shelf.find(id)
 
 result.print_book()
