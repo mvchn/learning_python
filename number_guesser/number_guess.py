@@ -40,4 +40,3 @@ try:
         print('My number is a little more than yours')
 except ValueError:
     print('\nThis is not a number. Try again...')
-print (a + n)
