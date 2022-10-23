@@ -1,20 +1,13 @@
 def archivation(input):
-    res = ''
-    # TODO: add loop
-    # TODO: use structure for input
+    res = {}
+
     for index in input:
-        if input[index] == 'A':
-            res += 'A'
+        if index not in res.keys():
+            res[index] = 1
+        else:
+            res[index] += 1
 
-    # if input[0] == 'A':
-    #     if input[1] == 'A':
-    #         if input[2] == 'A':
-    #             if input[3] == 'A':
-    #                 res += 'A4'
-    # if input[4] == 'T':
-    #     if input[5] == 'T':
-    #         res += 'T2'
-
+    # TODO: return string
     return res
 
 
