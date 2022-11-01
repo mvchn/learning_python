@@ -1,13 +1,10 @@
 def linear_search(a, n, x):
-    res = -1
-    i = 0
-
-    for item in a[:n]:
+    for i, item in enumerate(a[:n]):
         if item == x:
-            res = i
+            return i
         i += 1
 
-    return res
+    return -1
 
 
 books = ['python crash course', 'learn python the hard way', 'effective java', 'test', 'one', 'two']
