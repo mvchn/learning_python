@@ -1,4 +1,4 @@
-num = int(input())
+num = int(input("Enter range border:"))
 f1 = 0
 f2 = 1
 for i in range(1, num):
