@@ -13,18 +13,26 @@ def hello_casino():
 
 def choice(c, u):
     if u == c:
-        return '*** Fantastic! Well done!!! ***'
+        return 'well_done'
     elif u > c:
-        return 'Your number is a little more'
+        return 'little_more'
     elif u < c:
-        return 'Your number is a little less'
+        return 'little_less'
 
 
 def main():
+
+    messages = {
+        'well_done' : '*** Fantastic! Well done!!! ***',
+        'little_more' : 'Your number is a little more',
+        'little_less' : 'Your number is a little less'
+    }
+
     hello_casino()
-    computer = randint(0, 100)
+    computer = randint(0, 1)
     user = int(input())
-    print(choice(computer, user))
+    message = choice(computer, user)
+    print(messages[message])
 
 
 if __name__ == '__main__':
