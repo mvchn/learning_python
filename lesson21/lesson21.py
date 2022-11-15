@@ -1,8 +1,7 @@
 def linear_search(a, n, x):
-    for i, item in enumerate(a[:n]):
-        if item == x:
+    for i in range(0, n):
+        if a[i] == x:
             return i
-        i += 1
 
     return -1
 
