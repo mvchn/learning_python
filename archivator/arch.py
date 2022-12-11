@@ -7,7 +7,6 @@ def archivation(input):
         else:
             res[index] += 1
 
-    # TODO: return string
     return res
 
 

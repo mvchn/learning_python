@@ -5,10 +5,8 @@ HIGH_BORDER = 50
 
 computer_number = randint(LOW_BORDER, HIGH_BORDER)
 
-# TODO: use f() to print the message
 answer = str(input("I'm thinking of a number from " + str(LOW_BORDER) + " to " + str(HIGH_BORDER) + ". Do you want to guess?\n"))
 
-# TODO: use default answer by enter button
 if 'yes' in answer or 'YES' in answer or 'Yes' in answer:
     print('OK!')
 elif 'no' in answer or 'NO' in answer or 'No' in answer:
