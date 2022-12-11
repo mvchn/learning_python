@@ -10,4 +10,3 @@ else:
 
 print(current_minute)
 
-
