@@ -107,7 +107,6 @@ def get_most_popular():
             # max_popularity_index =
             popularity = book['popularity']
 
-    # TODO: get most popular book
     return books[0]
 
 

@@ -36,7 +36,6 @@ if not ducky.get_watered():
 
 print(ducky.get_watered())
 
-# TODO: make full test coverage
 
 
 

@@ -1,5 +1,3 @@
-# TODO:
-
 """
 The computer must generate a random number and store it in the variable.
 The user must enter a number from the keyboard and store it in the variable.

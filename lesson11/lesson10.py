@@ -14,6 +14,5 @@ for line in lines:
 
     pieces = line.split(",")
     item = Book(pieces[0].strip(), pieces[1].strip(), pieces[2].strip(), pieces[3].strip(), pieces[4].strip(), pieces[5].strip())
-    #TODO: remove '' in output
     print(f"{item.get_id()}. {item.get_name()}")
     #item.print_book()
