@@ -65,7 +65,7 @@ for book in books:
 print_books(books)
 
 # books[popularity.index(k)]
-book = get_most_popular(books)
+book = get_most_popular(books[:])
 print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 increase_price(book)
@@ -113,7 +113,7 @@ books.append({
 
 print_books(books)
 
-book = get_most_popular(books)
+book = get_most_popular(books[:])
 print(f" The book is '{book['title'].title()}' {book['author'].upper()}")
 
 market_events = [
